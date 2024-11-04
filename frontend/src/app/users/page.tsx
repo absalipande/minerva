@@ -26,7 +26,7 @@ const columns: GridColDef[] = [
     renderCell: (params) => (
       <div className='flex h-full w-full items-center justify-center'>
         <div className='h-9 w-9'>
-          <Image src={`/${params.value}`} alt={params.row.username} width={100} height={50} className='h-full rounded-full object-cover' />
+          <Image src={`https://minerva-s3-images.s3.ap-southeast-1.amazonaws.com/${params.value}`} alt={params.row.username} width={100} height={50} className='h-full rounded-full object-cover' />
         </div>
       </div>
     ),
