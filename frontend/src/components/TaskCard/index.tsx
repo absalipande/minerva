@@ -25,7 +25,7 @@ const TaskCard = ({ task }: Props) => {
     <div className='transform overflow-hidden rounded-lg bg-white shadow-md transition duration-300 ease-in-out hover:scale-105 dark:bg-dark-secondary dark:text-white'>
       {task.attachments && task.attachments.length > 0 && (
         <div className='relative h-48 w-full'>
-          <Image src={`/${task.attachments[0].fileURL}`} alt={task.attachments[0].fileName} layout='fill' objectFit='cover' className='rounded-t-lg' />
+          <Image src={`https://minerva-s3-images.s3.ap-southeast-1.amazonaws.com/${task.attachments[0].fileURL}`} alt={task.attachments[0].fileName} layout='fill' objectFit='cover' className='rounded-t-lg' />
         </div>
       )}
       <div className='p-6'>
