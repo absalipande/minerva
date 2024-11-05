@@ -162,13 +162,7 @@ const Task = ({ task }: TaskProps) => {
       className={`mb-4 rounded-md bg-white shadow dark:bg-dark-secondary ${isDragging ? 'opacity-50' : 'opacity-100'}`}
     >
       {task.attachments && task.attachments.length > 0 && (
-        <Image
-          src={`https://minerva-s3-images.s3.ap-southeast-1.amazonaws.com/${task.attachments[0].fileURL}`}
-          alt={task.attachments[0].fileName}
-          width={400}
-          height={200}
-          className='h-auto w-full rounded-t-md'
-        />
+        <Image src={`/${task.attachments[0].fileURL}`} alt={task.attachments[0].fileName} width={400} height={200} className='h-auto w-full rounded-t-md' />
       )}
 
       <div className='p-4 md:p-6'>
@@ -206,7 +200,7 @@ const Task = ({ task }: TaskProps) => {
           <div className='flex -space-x-[6px] overflow-hidden'>
             {task.assignee && (
               <Image
-                src={`https://minerva-s3-images.s3.ap-southeast-1.amazonaws.com/${task.assignee.profilePictureUrl!}`}
+                src={`/${task.assignee.profilePictureUrl!}`}
                 key={task.assignee.userId}
                 alt={task.assignee.username}
                 width={30}
@@ -216,7 +210,7 @@ const Task = ({ task }: TaskProps) => {
             )}
             {task.author && (
               <Image
-                src={`https://minerva-s3-images.s3.ap-southeast-1.amazonaws.com/${task.author.profilePictureUrl!}`}
+                src={`/${task.author.profilePictureUrl!}`}
                 key={task.author.userId}
                 alt={task.author.username}
                 width={30}
