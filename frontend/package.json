@@ -9,12 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@aws-amplify/ui-react": "^6.5.5",
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
     "@mui/material": "^6.1.5",
     "@mui/utils": "^6.1.5",
     "@mui/x-data-grid": "^7.21.0",
     "@reduxjs/toolkit": "^2.2.7",
+    "aws-amplify": "^6.8.0",
     "axios": "^1.7.7",
     "date-fns": "^4.0.0",
     "dotenv": "^16.4.5",
