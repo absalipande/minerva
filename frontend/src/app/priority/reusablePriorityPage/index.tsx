@@ -1,14 +1,14 @@
 'use client';
 
-import { useAppSelector } from '@/app/redux';
-import Header from '@/components/Header';
-import ModalNewTask from '@/components/ModalNewTask';
-import TaskCard from '@/components/TaskCard';
-import { dataGridClassNames, dataGridSxStyles } from '@/lib/utils';
-import { Priority, Task, useGetTasksByUserQuery } from '@/state/api';
-import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { Loader2 } from 'lucide-react';
 import React, { useState } from 'react';
+import Header from '@/components/Header';
+import { useAppSelector } from '@/app/redux';
+import TaskCard from '@/components/TaskCard';
+import ModalNewTask from '@/components/ModalNewTask';
+import { DataGrid, GridColDef } from '@mui/x-data-grid';
+import { dataGridClassNames, dataGridSxStyles } from '@/lib/utils';
+import { Priority, Task, useGetAuthUserQuery, useGetTasksByUserQuery } from '@/state/api';
 
 type Props = {
   priority: Priority;
@@ -69,9 +69,15 @@ const ReusablePriorityPage = ({ priority }: Props) => {
   const [view, setView] = useState('list');
   const [isModalNewTaskOpen, setIsModalNewTaskOpen] = useState(false);
 
-  const userId = 1;
-  const { data: tasks, isLoading, isError: isTasksError } = useGetTasksByUserQuery(userId || 0, { skip: userId === null });
-
+  const { data: currentUser } = useGetAuthUserQuery({});
+  const userId = currentUser?.userDetails?.userId ?? null;
+  const {
+    data: tasks,
+    isLoading,
+    isError: isTasksError,
+  } = useGetTasksByUserQuery(userId || 0, {
+    skip: userId === null,
+  });
   const isDarkMode = useAppSelector((state) => state.global.isDarkMode);
 
   const filteredTasks = tasks?.filter((task: Task) => task.priority === priority);
